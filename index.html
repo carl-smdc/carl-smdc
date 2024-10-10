@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMDC - SM Development Corporation</title>
+    <meta name="description" content="Leading real estate developer in the Philippines, committed to creating vibrant communities and elevating urban living.">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #ffd700 !important;
+        }
+        .card {
+            transition: transform 0.3s ease;
+        }
+        .card-body {
+            padding-bottom: 40px; /* Adjust as needed */
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .specialist-img {
+            transition: transform 0.3s ease;
+            max-width: auto;
+            max-height: auto;
+        }
+        .specialist-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Loading Animation CSS */
+        .loader {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.8);
+            z-index: 1000;
+        }
+
+        .jimu-primary-loading:before,
+        .jimu-primary-loading:after {
+            position: absolute;
+            top: 0;
+            content: '';
+        }
+
+        .jimu-primary-loading:before {
+            left: -19.992px;
+        }
+
+        .jimu-primary-loading:after {
+            left: 19.992px;
+            -webkit-animation-delay: 0.32s !important;
+            animation-delay: 0.32s !important;
+        }
+
+        .jimu-primary-loading:before,
+        .jimu-primary-loading:after,
+        .jimu-primary-loading {
+            background: #076fe5;
+            -webkit-animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+            animation: loading-keys-app-loading 0.8s infinite ease-in-out;
+            width: 13.6px;
+            height: 32px;
+        }
+
+        .jimu-primary-loading {
+            text-indent: -9999em;
+            margin: auto;
+            position: absolute;
+            right: calc(50% - 6.8px);
+            top: calc(50% - 16px);
+            -webkit-animation-delay: 0.16s !important;
+            animation-delay: 0.16s !important;
+        }
+
+        @-webkit-keyframes loading-keys-app-loading {
+            0%, 80%, 100% {
+                opacity: .75;
+                box-shadow: 0 0 #076fe5;
+                height: 32px;
+            }
+            40% {
+                opacity: 1;
+                box-shadow: 0 -8px #076fe5;
+                height: 40px;
+            }
+        }
+
+        @keyframes loading-keys-app-loading {
+            0%, 80%, 100% {
+                opacity: .75;
+                box-shadow: 0 0 #076fe5;
+                height: 32px;
+            }
+            40% {
+                opacity: 1;
+                box-shadow: 0 -8px #076fe5;
+                height: 40px;
+            }
+        }
+
+        /* Navigation Bar Color */
+        .navbar {
+            background-color: blue !important;
+        }
+
+        /* Navbar Brand Styling */
+        .navbar-brand {
+            font-size: 24px; /* Increase the font size */
+            font-weight: bold; /* Make the text bold */
+        }
+
+        /* Center elements in Property Specialist and Contacts tabs */
+        #specialist .card,
+        #contacts .card {
+            margin: 0 auto;
+        }
+
+        #specialist .card-body,
+        #contacts .card-body {
+            text-align: center;
+        }
+
+        #specialist .specialist-img,
+        #contacts .specialist-img {
+            margin: 0 auto;
+        }
+
+        /* White Bubble for Navigation Tabs */
+        .nav-bubble {
+            background-color: white;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .nav-bubble .nav-link {
+            color: black !important;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 5px 15px;
+            margin: 0 5px;
+            border-radius: 20px;
+        }
+
+        .nav-bubble .nav-link:hover {
+            color: white !important;
+            background-color: blue;
+        }
+    </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Residences by SMDC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto nav-bubble">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#properties">Properties</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#specialist">Property Specialist</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div id="home" class="animate__animated animate__fadeIn">
+            <h2 class="mb-4">Welcome to SMDC - Building Dreams, Shaping Cities</h2>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <p>SM Development Corporation (SMDC) is a leading real estate developer in the Philippines, committed to creating vibrant communities and elevating urban living.</p>
+                    <p>With our strategic locations, world-class designs, and commitment to quality, we offer more than just homes - we offer lifestyles.</p>
+                </div>
+                <div class="col-md-6">
+                    <img src="img\assets\SMDC.png" class="img-fluid mb-3 specialist-img" alt="Collage of Properties">
+                </div>
+            </div>
+
+            <div class="card mt-4 animate__animated animate__bounceIn">
+                <div class="card-body">
+                    <h3 class="card-title">Featured Property: Urban Oasis</h3>
+                    <img src="https://via.placeholder.com/600x400?text=Urban+Oasis" class="img-fluid mb-3" alt="Urban Oasis">
+                    <p class="card-text">Experience luxury living in the heart of Metro Manila. Our newest development, Urban Oasis, offers premium 1-3 bedroom units with breathtaking city views and world-class amenities.</p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Prime location near major business districts</li>
+                        <li class="list-group-item">Integrated retail spaces and SM Mall access</li>
+                        <li class="list-group-item">Resort-style swimming pools and landscaped gardens</li>
+                        <li class="list-group-item">State-of-the-art fitness center and function rooms</li>
+                    </ul>
+                    <a href="https://www.facebook.com/Official.Residences.by.SMDC" class="btn btn-primary mt-3">Learn More</a>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Our Vision</h4>
+                            <p class="card-text">To be the leading developer of world-class residential communities, transforming the urban landscape of the Philippines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Our Commitment</h4>
+                            <p class="card-text">We are dedicated to providing affordable luxury, ensuring that every Filipino can own a piece of their dream.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h4 class="card-title">Our Developments</h4>
+                            <p class="card-text">From Metro Manila to emerging cities across the Philippines, discover our wide range of properties suited for every lifestyle.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="properties" class="mt-4 animate__animated animate__fadeIn" style="display: none;">
+            <h2 class="mb-4 text-center">Our Properties</h2>
+            <div class="row">
+                <!-- Property Cards -->
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Air Residences" data-location="Ayala, Makati" data-image="img\air-residence.jpg">
+                        <img src="img\assets\air-residence.png" class="card-img-top" alt="Air Residences - Ayala, Makati">
+                        <div class="card-body">
+                            <h5 class="card-title">Air Residences</h5>
+                            <p class="card-text">Ayala, Makati</p>
+                            <a href="pdf\air-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Bloom Residences" data-location="Parañaque" data-image="img\bloom-residence.jpg">
+                        <img src="img\assets\bloom-residence.png" class="card-img-top" alt="Bloom Residences - Parañaque">
+                        <div class="card-body">
+                            <h5 class="card-title">Bloom Residences</h5>
+                            <p class="card-text">Parañaque</p>
+                            <a href="pdf\bloom-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Breeze Residences" data-location="Roxas Blvd. Pasay" data-image="img\breeze-residence.jpg">
+                        <img src="img\assets\breeze-residence.png" class="card-img-top" alt="Breeze Residences - Roxas Blvd. Pasay">
+                        <div class="card-body">
+                            <h5 class="card-title">Breeze Residences</h5>
+                            <p class="card-text">Roxas Blvd. Pasay</p>
+                            <a href="pdf\breeze-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Calm Residences" data-location="Sta. Rosa Laguna" data-image="img\calm-residence.jpg">
+                        <img src="img\assets\calm-residence.png" class="card-img-top" alt="Calm Residences - Sta. Rosa Laguna">
+                        <div class="card-body">
+                            <h5 class="card-title">Calm Residences</h5>
+                            <p class="card-text">Sta. Rosa Laguna</p>
+                            <a href="pdf\calm-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Charm Residences" data-location="Cainta Rizal" data-image="img\charm-residence.jpg">
+                        <img src="img\assets\charm-residence.png" class="card-img-top" alt="Charm Residences - Cainta Rizal">
+                        <div class="card-body">
+                            <h5 class="card-title">Charm Residences</h5>
+                            <p class="card-text">Cainta Rizal</p>
+                            <a href="pdf\charm-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Coast Residences" data-location="Roxas Blvd. Pasay" data-image="https://via.placeholder.com/600x400?text=Coast+Residences">
+                        <img src="img\assets\coast-residence.png" class="card-img-top" alt="Coast Residences - Roxas Blvd. Pasay">
+                        <div class="card-body">
+                            <h5 class="card-title">Coast Residences</h5>
+                            <p class="card-text">Roxas Blvd. Pasay</p>
+                            <a href="pdf\coast-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Fame Residences" data-location="EDSA Mandaluyong" data-image="https://via.placeholder.com/600x400?text=Fame+Residences">
+                        <img src="img\assets\fame-residence.png" class="card-img-top" alt="Fame Residences - EDSA Mandaluyong">
+                        <div class="card-body">
+                            <h5 class="card-title">Fame Residences</h5>
+                            <p class="card-text">EDSA Mandaluyong</p>
+                            <a href="pdf\fame-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Field Residences" data-location="SM Sucat Parañaque" data-image="https://via.placeholder.com/600x400?text=Field+Residences">
+                        <img src="img\assets\field-residence.png" class="card-img-top" alt="Field Residences - SM Sucat Parañaque">
+                        <div class="card-body">
+                            <h5 class="card-title">Field Residences</h5>
+                            <p class="card-text">SM Sucat Parañaque</p>
+                            <a href="pdf\field-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Gem Residences" data-location="C5 Pasig" data-image="https://via.placeholder.com/600x400?text=Gem+Residences">
+                        <img src="img\assets\gem-residence.png" class="card-img-top" alt="Gem Residences - C5 Pasig">
+                        <div class="card-body">
+                            <h5 class="card-title">Gem Residences</h5>
+                            <p class="card-text">C5 Pasig</p>
+                            <a href="pdf\gem-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Glam Residences" data-location="EDSA Kamuning Quezon City" data-image="https://via.placeholder.com/600x400?text=Glam+Residences">
+                        <img src="img\assets\glam-residence.png" class="card-img-top" alt="Glam Residences - EDSA Kamuning Quezon City">
+                        <div class="card-body">
+                            <h5 class="card-title">Glam Residences</h5>
+                            <p class="card-text">EDSA Kamuning Quezon City</p>
+                            <a href="pdf\glam-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Gold Residences" data-location="NAIA Parañaque" data-image="https://via.placeholder.com/600x400?text=Gold+Residences">
+                        <img src="img\assets\gold-residence.png" class="card-img-top" alt="Gold Residences - NAIA Parañaque">
+                        <div class="card-body">
+                            <h5 class="card-title">Gold Residences</h5>
+                            <p class="card-text">NAIA Parañaque</p>
+                            <a href="pdf\gold-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Gold Residential Offices" data-location="NAIA Parañaque" data-image="https://via.placeholder.com/600x400?text=Gold+Residential+Offices">
+                        <img src="img\assets\gold-towers-residential-offices.png" class="card-img-top" alt="Gold Residential Offices - NAIA Parañaque">
+                        <div class="card-body">
+                            <h5 class="card-title">Gold Residential Offices</h5>
+                            <p class="card-text">NAIA Parañaque</p>
+                            <a href="pdf\gold-towers-residential-offices.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Grace Residences" data-location="Taguig" data-image="https://via.placeholder.com/600x400?text=Grace+Residences">
+                        <img src="img\assets\grace-residence.png" class="card-img-top" alt="Grace Residences - Taguig">
+                        <div class="card-body">
+                            <h5 class="card-title">Grace Residences</h5>
+                            <p class="card-text">Taguig</p>
+                            <a href="pdf\grace-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Green 2 Residences" data-location="Dasmariñas Cavite" data-image="https://via.placeholder.com/600x400?text=Green+2+Residences">
+                        <img src="img\assets\green-2-residence.png" class="card-img-top" alt="Green 2 Residences - Dasmariñas Cavite">
+                        <div class="card-body">
+                            <h5 class="card-title">Green 2 Residences</h5>
+                            <p class="card-text">Dasmariñas Cavite</p>
+                            <a href="pdf\green-2-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Hill Residences" data-location="Novaliches Quezon City" data-image="https://via.placeholder.com/600x400?text=Hill+Residences">
+                        <img src="img\assets\hill-residence.png" class="card-img-top" alt="Hill Residences - Novaliches Quezon City">
+                        <div class="card-body">
+                            <h5 class="card-title">Hill Residences</h5>
+                            <p class="card-text">Novaliches Quezon City</p>
+                            <a href="pdf\hill-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Hope Residences" data-location="SM Trece Martires Cavite" data-image="https://via.placeholder.com/600x400?text=Hope+Residences">
+                        <img src="img\assets\hope-residence.png" class="card-img-top" alt="Hope Residences - SM Trece Martires Cavite">
+                        <div class="card-body">
+                            <h5 class="card-title">Hope Residences</h5>
+                            <p class="card-text">SM Trece Martires Cavite</p>
+                            <a href="pdf\hope-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Jade Residences" data-location="Chino Roces Makati" data-image="https://via.placeholder.com/600x400?text=Jade+Residences">
+                        <img src="img\assets\jade-residence.png" class="card-img-top" alt="Jade Residences - Chino Roces Makati">
+                        <div class="card-body">
+                            <h5 class="card-title">Jade Residences</h5>
+                            <p class="card-text">Chino Roces Makati</p>
+                            <a href="pdf\jade-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Joy Residences" data-location="SM Baliwag Bulacan" data-image="https://via.placeholder.com/600x400?text=Joy+Residences">
+                        <img src="img\assets\joy-residence.png" class="card-img-top" alt="Joy Residences - SM Baliwag Bulacan">
+                        <div class="card-body">
+                            <h5 class="card-title">Joy Residences</h5>
+                            <p class="card-text">SM Baliwag Bulacan</p>
+                            <a href="pdf\joy-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Lane Residences" data-location="SM Lanang Premier Davao" data-image="https://via.placeholder.com/600x400?text=Lane+Residences">
+                        <img src="img\assets\lane-residence.png" class="card-img-top" alt="Lane Residences - SM Lanang Premier Davao">
+                        <div class="card-body">
+                            <h5 class="card-title">Lane Residences</h5>
+                            <p class="card-text">SM Lanang Premier Davao</p>
+                            <a href="pdf\lane-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Leaf Residences" data-location="Susana Heights Muntinlupa" data-image="https://via.placeholder.com/600x400?text=Leaf+Residences">
+                        <img src="img\assets\leaf-residence.png" class="card-img-top" alt="Leaf Residences - Susana Heights Muntinlupa">
+                        <div class="card-body">
+                            <h5 class="card-title">Leaf Residences</h5>
+                            <p class="card-text">Susana Heights Muntinlupa</p>
+                            <a href="pdf\leaf-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Light Residences" data-location="Boni EDSA Mandaluyong" data-image="https://via.placeholder.com/600x400?text=Light+Residences">
+                        <img src="img\assets\light-residence.png" class="card-img-top" alt="Light Residences - Boni EDSA Mandaluyong">
+                        <div class="card-body">
+                            <h5 class="card-title">Light Residences</h5>
+                            <p class="card-text">Boni EDSA Mandaluyong</p>
+                            <a href="pdf\light-residence.pdf.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Light 2 Residences" data-location="Boni EDSA Mandaluyong" data-image="https://via.placeholder.com/600x400?text=Light+2+Residences">
+                        <img src="img\assets\light-2-residence.png" class="card-img-top" alt="Light 2 Residences - Boni EDSA Mandaluyong">
+                        <div class="card-body">
+                            <h5 class="card-title">Light 2 Residences</h5>
+                            <p class="card-text">Boni EDSA Mandaluyong</p>
+                            <a href="pdf\light-2-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Lush Residences" data-location="Chino Roces Makati" data-image="https://via.placeholder.com/600x400?text=Lush+Residences">
+                        <img src="img\assets\lush-residence.png" class="card-img-top" alt="Lush Residences - Chino Roces Makati">
+                        <div class="card-body">
+                            <h5 class="card-title">Lush Residences</h5>
+                            <p class="card-text">Chino Roces Makati</p>
+                            <a href="pdf\lush-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Now Residences" data-location="Angeles Pampanga" data-image="https://via.placeholder.com/600x400?text=Now+Residences">
+                        <img src="img\assets\now-residence.png" class="card-img-top" alt="Now Residences - Angeles Pampanga">
+                        <div class="card-body">
+                            <h5 class="card-title">Now Residences</h5>
+                            <p class="card-text">Angeles Pampanga</p>
+                            <a href="pdf\now-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Park Residences" data-location="SM Santa Rosa Laguna" data-image="https://via.placeholder.com/600x400?text=Park+Residences">
+                        <img src="img\assets\park-residence.png" class="card-img-top" alt="Park Residences - SM Santa Rosa Laguna">
+                        <div class="card-body">
+                            <h5 class="card-title">Park Residences</h5>
+                            <p class="card-text">SM Santa Rosa Laguna</p>
+                            <a href="pdf\park-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Red Residences" data-location="Chino Roces Makati" data-image="https://via.placeholder.com/600x400?text=Red+Residences">
+                        <img src="img\assets\red-residence.png" class="card-img-top" alt="Red Residences - Chino Roces Makati">
+                        <div class="card-body">
+                            <h5 class="card-title">Red Residences</h5>
+                            <p class="card-text">Chino Roces Makati</p>
+                            <a href="pdf\red-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="S Residences" data-location="MOA Complex Pasay" data-image="https://via.placeholder.com/600x400?text=S+Residences">
+                        <img src="img\assets\s-residence.png" class="card-img-top" alt="S Residences - MOA Complex Pasay">
+                        <div class="card-body">
+                            <h5 class="card-title">S Residences</h5>
+                            <p class="card-text">MOA Complex Pasay</p>
+                            <a href="pdf\s-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Sail Residences" data-location="MOA Complex Pasay" data-image="https://via.placeholder.com/600x400?text=Sail+Residences">
+                        <img src="img\assets\sail-residence.png" class="card-img-top" alt="Sail Residences - MOA Complex Pasay">
+                        <div class="card-body">
+                            <h5 class="card-title">Sail Residences</h5>
+                            <p class="card-text">MOA Complex Pasay</p>
+                            <a href="pdf\sail-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Shore Residences" data-location="MOA Complex Pasay" data-image="https://via.placeholder.com/600x400?text=Shore+Residences">
+                        <img src="img\assets\shore-residence.png" class="card-img-top" alt="Shore Residences - MOA Complex Pasay">
+                        <div class="card-body">
+                            <h5 class="card-title">Shore Residences</h5>
+                            <p class="card-text">MOA Complex Pasay</p>
+                            <a href="pdf\shore-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Shore 2 Residences" data-location="MOA Complex Pasay" data-image="https://via.placeholder.com/600x400?text=Shore+2+Residences">
+                        <img src="img\assets\shore-2-residence.png" class="card-img-top" alt="Shore 2 Residences - MOA Complex Pasay">
+                        <div class="card-body">
+                            <h5 class="card-title">Shore 2 Residences</h5>
+                            <p class="card-text">MOA Complex Pasay</p>
+                            <a href="pdf\shore-2-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Shore 3 Residences" data-location="MOA Complex Pasay" data-image="https://via.placeholder.com/600x400?text=Shore+3+Residences">
+                        <img src="img\assets\shore-3-residence.png" class="card-img-top" alt="Shore 3 Residences - MOA Complex Pasay">
+                        <div class="card-body">
+                            <h5 class="card-title">Shore 3 Residences</h5>
+                            <p class="card-text">MOA Complex Pasay</p>
+                            <a href="pdf\shore-3-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Smile Residences" data-location="SM Bacolod" data-image="https://via.placeholder.com/600x400?text=Smile+Residences">
+                        <img src="img\assets\smile-residence.png" class="card-img-top" alt="Smile Residences - SM Bacolod">
+                        <div class="card-body">
+                            <h5 class="card-title">Smile Residences</h5>
+                            <p class="card-text">SM Bacolod</p>
+                            <a href="pdf\smile-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="South Residences" data-location="SM Southmall Las Piñas" data-image="https://via.placeholder.com/600x400?text=South+Residences">
+                        <img src="img\assets\south-residence.png" class="card-img-top" alt="South Residences - SM Southmall Las Piñas">
+                        <div class="card-body">
+                            <h5 class="card-title">South Residences</h5>
+                            <p class="card-text">SM Southmall Las Piñas</p>
+                            <a href="pdf\south-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="South 2 Residences" data-location="SM Southmall Las Piñas" data-image="https://via.placeholder.com/600x400?text=South+2+Residences">
+                        <img src="img\assets\south-2-residence.png" class="card-img-top" alt="South 2 Residences - SM Southmall Las Piñas">
+                        <div class="card-body">
+                            <h5 class="card-title">South 2 Residences</h5>
+                            <p class="card-text">SM Southmall Las Piñas</p>
+                            <a href="pdf\south-2-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Spring Residences" data-location="SM Bicutan Parañaque" data-image="https://via.placeholder.com/600x400?text=Spring+Residences">
+                        <img src="img\assets\spring-residence.png" class="card-img-top" alt="Spring Residences - SM Bicutan Parañaque">
+                        <div class="card-body">
+                            <h5 class="card-title">Spring Residences</h5>
+                            <p class="card-text">SM Bicutan Parañaque</p>
+                            <a href="pdf\spring-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Style Residences" data-location="SM Iloilo" data-image="https://via.placeholder.com/600x400?text=Style+Residences">
+                        <img src="img\assets\style-residence.png" class="card-img-top" alt="Style Residences - SM Iloilo">
+                        <div class="card-body">
+                            <h5 class="card-title">Style Residences</h5>
+                            <p class="card-text">SM Iloilo</p>
+                            <a href="pdf\style-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Trees Residences" data-location="Fairview Quezon City" data-image="https://via.placeholder.com/600x400?text=Trees+Residences">
+                        <img src="img\assets\trees-residence.png" class="card-img-top" alt="Trees Residences - Fairview Quezon City">
+                        <div class="card-body">
+                            <h5 class="card-title">Trees Residences</h5>
+                            <p class="card-text">Fairview Quezon City</p>
+                            <a href="pdf\trees-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card animate__animated animate__fadeInUp" data-bs-toggle="modal" data-bs-target="#propertyModal" data-title="Zeal Residences" data-location="General Trias Cavite" data-image="https://via.placeholder.com/600x400?text=Zeal+Residences">
+                        <img src="img\assets\zeal-residence.png" class="card-img-top" alt="Zeal Residences - General Trias Cavite">
+                        <div class="card-body">
+                            <h5 class="card-title">Zeal Residences</h5>
+                            <p class="card-text">General Trias Cavite</p>
+                            <a href="pdf\zeal-residence.pdf" class="btn btn-sm btn-primary position-absolute bottom-0 start-0 m-2" target="_blank">More Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="specialist" class="mt-4 animate__animated animate__fadeIn" style="display: none;">
+            <h2 class="mb-4 text-center">Our Property Specialist</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="img\assets\dylan.png" class="img-fluid mb-3 specialist-img" alt="Dylan Carl Dimalanta">
+                            <h3 class="card-title">Dylan Carl Dimalanta</h3>
+                            <p class="card-text">Hi, I’m Dylan Carl Dimalanta, a property specialist with SMDC. I’m here to help you find your ideal home or investment property. With my deep knowledge of SMDC’s diverse portfolio, I’m dedicated to offering you personalized solutions that fit your unique needs and lifestyle. I stay on top of market trends and provide insights that help you make informed decisions. My goal is to make your property search as seamless and stress-free as possible. Whether you’re buying for the first time or looking to invest, I’m committed to guiding you every step of the way. Let’s connect today and start turning your property dreams into reality.
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="contacts" class="mt-4 animate__animated animate__fadeIn" style="display: none;">
+            <h2 class="mb-4 text-center">Contacts</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <img src="img\assets\dylan-contacts.png" class="img-fluid mb-3 specialist-img" alt="Dylan Carl Dimalanta">
+                            <a href="https://www.facebook.com/Official.Residences.by.SMDC" class="btn btn-primary mt-3">Contact Me</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Loading Animation HTML -->
+    <div class="loader">
+        <div class="justify-content-center jimu-primary-loading"></div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector('.loader').style.display = 'flex'; // Show loader
+                setTimeout(() => {
+                    document.querySelectorAll('.container > div').forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    targetElement.style.display = 'block';
+                    targetElement.classList.add('animate__fadeIn');
+                    document.querySelector('.loader').style.display = 'none'; // Hide loader
+                }, 500); // Simulate loading time
+            });
+        });
+
+        // Form submission (replace with your actual form handling logic)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message. We will get back to you soon!');
+            this.reset();
+        });
+
+        // Property Modal Initialization
+        var propertyModal = document.getElementById('propertyModal')
+        propertyModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            var title = button.getAttribute('data-title')
+            var location = button.getAttribute('data-location')
+            var image = button.getAttribute('data-image')
+            var modalTitle = propertyModal.querySelector('.modal-title')
+            var modalLocation = propertyModal.querySelector('#propertyModalLocation')
+            var modalImage = propertyModal.querySelector('#propertyModalImage')
+
+            modalTitle.textContent = title
+            modalLocation.textContent = location
+            modalImage.src = image
+        })
+    </script>
+</body>
+</html>
