@@ -851,6 +851,19 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
+          var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+          var navbarToggler = document.querySelector('.navbar-toggler');
+          var navbarCollapse = document.querySelector('.navbar-collapse');
+
+          navLinks.forEach(function(link) {
+              link.addEventListener('click', function() {
+                  if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                      navbarToggler.click();
+                  }
+              });
+          });
+
+
           var carouselItems = document.querySelectorAll('#featuredPropertyCarousel .carousel-item');
           carouselItems.forEach(function(item) {
               var img = item.querySelector('img');
