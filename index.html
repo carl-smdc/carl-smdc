@@ -866,7 +866,7 @@
 
                     // Close the navbar collapse
                     if (window.getComputedStyle(navbarToggler).display !== 'none') {
-                        bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                        new bootstrap.Collapse(navbarCollapse).hide();
                     }
                 }, 500); // Simulate loading time
             });
