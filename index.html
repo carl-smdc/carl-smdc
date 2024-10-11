@@ -238,7 +238,31 @@
             color: white !important;
             background-color: blue;
         }
-    </style>
+
+        @media (min-width: 992px) {
+            .navbar-nav {
+                margin-left: auto;
+            }
+            .nav-bubble {
+                margin-right: 15px;
+            }
+        }
+
+        @media (max-width: 991.98px) {
+            .navbar-nav {
+                text-align: center;
+            }
+            .nav-bubble {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .nav-bubble .nav-link {
+                margin: 5px 0;
+            }
+        }
+
+        </style>
 
 </head>
 <body>
@@ -817,6 +841,13 @@
                     targetElement.style.display = 'block';
                     targetElement.classList.add('animate__fadeIn');
                     document.querySelector('.loader').style.display = 'none'; // Hide loader
+
+                    // Close the navbar collapse
+                    var navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        var bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                        bsCollapse.hide();
+                    }
                 }, 500); // Simulate loading time
             });
         });
@@ -843,6 +874,17 @@
             modalLocation.textContent = location
             modalImage.src = image
         })
+
+        // Ensure hamburger menu works after navigation
+        document.querySelector('.navbar-toggler').addEventListener('click', function() {
+            var navbarCollapse = document.querySelector('.navbar-collapse');
+            var bsCollapse = new bootstrap.Collapse(navbarCollapse);
+            if (navbarCollapse.classList.contains('show')) {
+                bsCollapse.hide();
+            } else {
+                bsCollapse.show();
+            }
+        });
     </script>
 
 
